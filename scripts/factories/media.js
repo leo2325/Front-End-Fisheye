@@ -14,8 +14,8 @@ function mediaFactory(data) {
         const article = document.createElement('article');
             
             function testMediaType(){
-                let regexMediaType = '\.mp4|\.video';
-                if( regexMediaType.test( picture.value == false )) {
+                let regexMediaType = /\.mp4|\.video/;
+                if( regexMediaType.test( picture.value ) == false) {
                     // constante image = création de l'élément 'img' dans le DOM 
                     const mediaElement = document.createElement( 'img' );
                     mediaElement.src = picture;
@@ -23,7 +23,7 @@ function mediaFactory(data) {
                 else{
                     // constante video = création de l'élément 'video' dans le DOM 
                     const mediaElement = document.createElement( 'video' );
-                    mediaElement.setAttribute( 'src', '');
+                    mediaElement.setAttribute( 'src', picture );
                 };
                 
             };
@@ -51,8 +51,8 @@ function mediaFactory(data) {
 
 
 
-// Récupérer l'id du photographe contenu dans l'URL
-// Récupérer l'id du média
+// Récupérer l'id du photographe contenu dans l'URL OK
+// Récupérer l'id du média OK
 // --> Comparer les deux ID
 // Si les id sont identiques -> afficher le média
 // Sinon ne pas le prendre en compte.
@@ -62,22 +62,19 @@ let params = (new URL(document.location)).searchParams;
 let photographID = parseInt(params.get('id'));
 console.log(photographID);
 
-// On récupère l'id du média
-let mediaID = photographID;
-console.log(mediaID)
 
 //Fonction asynchrone de récupération des données
-async function getPictures() {
+async function getPictures(ID) {
     // Récupération des données depuis le fichier JSON
         const reponse = await fetch('./data/photographers.json');
         const mediaFiches = await reponse.json();
 
-      let medias = [];
-    // et bien retourner le tableau photographers seulement une fois récupéré
-    return mediaFiches;
+            // et bien retourner le tableau medias seulement une fois récupéré
+            return mediaFiches.media.filter(media => media.photographerId === ID);
+     
 }
 
-async function displayData(media) {
+function displayData(media) {
     const mediaSection = document.querySelector(".photograph_book");
 
     media.forEach((media) => {
@@ -87,10 +84,10 @@ async function displayData(media) {
     });
 };
 
-async function init() {
+async function init(photographID) {
     // Récupère les datas des photographes
-    const { medias } = await getPictures();
+    const medias = await getPictures(photographID);
     displayData( medias );
 };
 
-init();
+init(photographID);

@@ -37,7 +37,30 @@ function photographerFactory(data) {
         article.appendChild(priceElement);
         return (article);  
     }
-    return { name, picture, city, country, tagline, price, getUserCardDOM }
+
+    function getUserBannerDOM() {
+        // Création de la constante article (Articles qui contiennent les fiches de présentation des photographes).
+        const div = document.createElement('div');
+        // Constante name = création de l'élément 'h2' dans le DOM
+        const nameElement = document.createElement( 'h2' );
+        nameElement.innerText = name;
+        // Constante location = création de l'élément 'p' dans le DOM
+        const locationElement = document.createElement('p');
+        locationElement.innerText = city + ", " + country;
+        // Création de la constante tagline = élément p dans le DOM
+        const tagLine = document.createElement('p');
+        tagLine.innerText = tagline;
+        
+
+    // Création des éléments enfants de l'article, placé à la suite les uns des
+    div.appendChild(nameElement);
+    div.appendChild(locationElement);
+    div.appendChild(tagLine);
+    return (div);
+    }
+
+    return { name, picture, city, country, tagline, price, getUserCardDOM, getUserBannerDOM } 
+
 };
 
 
