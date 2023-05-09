@@ -17,26 +17,45 @@
     
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button id="contact_button" class="allBtn">Contactez-moi</button>
       </div>
       
     </main>
+
     <div class="photograph_book"></div>
+    
     <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+			<div id="modal">
+				
+        <header>
+          <h2 id="modalTitle">Contactez-moi</h2>
+          <img src="assets/icons/close.svg" id="closeModal_Btn" />
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
+				
+        <form action="photographer.html" method="get">
+            <div class="formData">
+              <label for="firstName">Prénom</label>
+              <input class="text-control" type="text" id="firstName" name="firstName" minlength="2"/>
+            </div>
+            <div class="formData">
+              <label for="lastName">Nom</label>  
+              <input class="text-control" type="text" id="lastName" name="lastName"/>
+            </div>
+            <div class="formData">
+              <label for="email">E-mail</label> 
+              <input class="text-control" type="text" id="email" name="email"/>
+            </div>
+            <div class="formData">
+              <label for="message">Votre message</label> 
+              <input class="text-control" type="text" id="message" name="message"/>
+            </div>
+          
+          <button class="allBtn" id="sendingBtn">Envoyer</button>
 				</form>
-			</div>
+			
+      </div>
 		</div>
+
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/factories/media.js"></script>
     <script src="scripts/pages/photographer.js"></script>
