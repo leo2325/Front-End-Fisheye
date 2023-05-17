@@ -58,7 +58,12 @@ function displayMediaData(media, photographerName) {
         const userBookDOM = mediaModel.getUserBookDOM();
         mediaSection.appendChild(userBookDOM);
     });
-};
+
+     
+};init(photographID);  
+
+
+
 
 function displayCaroussel(media, photographerName) {
     const mediaSection = document.querySelector("#caroussel_modal_box");
@@ -89,5 +94,5 @@ init(photographID);
 
 
 media.forEach((media) => {
-    
+
 })

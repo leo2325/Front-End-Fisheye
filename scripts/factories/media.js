@@ -96,7 +96,7 @@ function mediaFactory(data, photographerName) {
 
         const closeBtn = document.createElement('i');
         closeBtn.setAttribute('class', 'fa-solid fa-xmark');
-        closeBtn.setAttribute('id', 'closeBtn');
+        closeBtn.setAttribute('id', 'closeCarousselBtn');
 
         carousselBox.appendChild(previousBtn);
         carousselBox.appendChild(mediaElementZoom);
