@@ -14,9 +14,20 @@ async function getPhotographById(photographID) {
 
 async function displayPhotographerData(photographer) {
     const photographSection = document.querySelector(".photograph-header");
+    const bannerBottomSection = document.querySelector("body");
+    const titleContactFormSection = document.querySelector("#modal header");
+
     const photographerModel = photographerFactory(photographer);
+    
     const userBannerDOM = photographerModel.getUserBannerDOM();
+    const userBannerDOMPortrait = photographerModel.getUserBannerDOMPortrait();
+    const UserBannerDOMLikeAndPrice = photographerModel.getUserBannerDOMLikeAndPrice();
+    const userNameDOMContactForm = photographerModel.getUserNameDOMContactForm();
+
     photographSection.appendChild(userBannerDOM);
+    photographSection.appendChild(userBannerDOMPortrait);
+    bannerBottomSection.appendChild(UserBannerDOMLikeAndPrice);    
+    titleContactFormSection.appendChild(userNameDOMContactForm);
 };
 
 async function init(photographID) {
@@ -49,4 +60,34 @@ function displayMediaData(media, photographerName) {
     });
 };
 
-init(photographID);
+function displayCaroussel(media, photographerName) {
+    const mediaSection = document.querySelector("#caroussel_modal_box");
+    
+    media.forEach((media) => {
+        const mediaModel = mediaFactory(media, photographerName);
+        const carousselDom = mediaModel.getUserCarousselDOM();
+        mediaSection.appendChild(carousselDom);
+    });
+
+
+//creer constantes pour les fleches precedentes et suivantes
+//leur assigner le changement de photos
+//faire le design en css
+
+
+// possibilité de cliquer sur le média via un a href ou sans ? 
+
+// est ce que je dois créer charger l'ensemble des photos, et ensuite gérer le changement d'image ?
+// oiu est ce que je dois charger les images seulement une fois que c'est leur tour d'etre zoomé ? 
+
+init(photographID);    
+
+}
+
+
+
+
+
+media.forEach((media) => {
+    
+})

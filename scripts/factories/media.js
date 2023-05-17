@@ -5,7 +5,7 @@ function mediaFactory(data, photographerName) {
     const photographerFirstName = photographerName.split(' ');
 
     const picture = `assets/${photographerFirstName[0]}/${image}`;
-
+    const videoLink = `assets/${photographerFirstName[0]}/${video}`;
     // Fonction qui génère les fiches de présentation des photographes
     function getUserBookDOM() {
 
@@ -15,7 +15,7 @@ function mediaFactory(data, photographerName) {
 
 
         let mediaElement = undefined;
-        
+
         if( image && !video) {
             // constante image = création de l'élément 'img' dans le DOM 
             mediaElement = document.createElement('img');
@@ -23,10 +23,17 @@ function mediaFactory(data, photographerName) {
             mediaElement.setAttribute('class', 'mediaElement');
         }
         else {
+
             // constante video = création de l'élément 'video' dans le DOM 
             mediaElement = document.createElement('video');
-            mediaElement.setAttribute('src', video);
             mediaElement.setAttribute('class', 'mediaElement');
+            mediaElement.setAttribute('controls', '');
+
+            let sourceVideo = document.createElement('source');
+            sourceVideo.setAttribute('src', videoLink);
+            sourceVideo.setAttribute('type', "video/mp4");
+
+            mediaElement.appendChild(sourceVideo);
         };
 
         // Const div contenant le titre et les likes
@@ -47,5 +54,58 @@ function mediaFactory(data, photographerName) {
         div.appendChild(likeSystem);
         return (article);
     }
-    return { id, photographerId, title, image, video, likes, getUserBookDOM }
+
+    // CAROUSSEL   FACTORY //
+    // Fonction de mise en forme du caroussel
+    function getUserCarousselDOM(){
+        const carousselModal = document.createElement('div');
+        carousselModal.setAttribute('class', 'caroussel_modal');
+        carousselModal.setAttribute('aria-hidden', 'true');
+        carousselModal.setAttribute('role', 'dialog');
+        carousselModal.setAttribute('aria-describedby', 'modalTitle');
+
+        const carousselBox = document.createElement('div');
+        
+        const previousBtn = document.createElement('i');
+        previousBtn.setAttribute('class', 'fa-solid fa-chevron-left');
+        
+        let mediaElementZoom = undefined;
+
+        if( image && !video) {
+            // constante image = création de l'élément 'img' dans le DOM 
+            mediaElementZoom = document.createElement('img');
+            mediaElementZoom.src = picture;
+            mediaElementZoom.setAttribute('class', 'mediaElement');
+        }
+        else {
+
+            // constante video = création de l'élément 'video' dans le DOM 
+            mediaElementZoom = document.createElement('video');
+            mediaElementZoom.setAttribute('class', 'mediaElement');
+            mediaElementZoom.setAttribute('controls', '');
+
+            let sourceVideoZoom = document.createElement('source');
+            sourceVideoZoom.setAttribute('src', videoLink);
+            sourceVideoZoom.setAttribute('type', "video/mp4");
+
+            mediaElementZoom.appendChild(sourceVideo);
+        };
+
+        const nextBtn= document.createElement('i');
+        nextBtn.setAttribute('class', 'fa-solid fa-chevron-right');
+
+        const closeBtn = document.createElement('i');
+        closeBtn.setAttribute('class', 'fa-solid fa-xmark');
+        closeBtn.setAttribute('id', 'closeBtn');
+
+        carousselBox.appendChild(previousBtn);
+        carousselBox.appendChild(mediaElementZoom);
+        carousselBox.appendChild(nextBtn);
+        carousselModal.appendChild(carousselBox);
+        carousselModal.appendChild(closeBtn);
+
+        return (carousselModal);
+    }
+
+    return { id, photographerId, title, image, video, likes, getUserBookDOM, getUserCarousselDOM }
 };
