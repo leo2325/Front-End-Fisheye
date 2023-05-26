@@ -1,7 +1,7 @@
 function mediaFactory(data, photographerName) {
     
     const { id, photographerId, title, image, video, likes } = data;
-
+    // On récupère la partie correspondante du nom du photographe
     const photographerFirstName = photographerName.split(' ');
 
     const picture = `assets/${photographerFirstName[0]}/${image}`;
@@ -46,29 +46,47 @@ function mediaFactory(data, photographerName) {
 
         const likeSystem = document.createElement('div');
         likeSystem.setAttribute('class', 'likeSystem');
+
+        const numberOfLike = document.createElement('p');
+        numberOfLike.setAttribute('class', 'numberOfLike');
+        numberOfLike.innerText = '0';
+
+        const divIconsLike = document.createElement('div');
+        divIconsLike.setAttribute('class', 'iconsLike')
+
+        const iconUnlike = document.createElement('i');
+        iconUnlike.setAttribute('class', 'fa-regular fa-heart');
+        iconUnlike.setAttribute('id', 'unlike');
+
+        const iconLike = document.createElement('i');
+        iconLike.setAttribute('class' , 'fa-solid fa-heart');
+        iconLike.setAttribute('id', 'like');
+
         
         // Création des éléments enfants de l'article, placé à la suite les uns des
         article.appendChild(mediaElement);
         article.appendChild(div);
         div.appendChild(photoTitle);
+        
         div.appendChild(likeSystem);
+            likeSystem.appendChild(numberOfLike);
+            likeSystem.appendChild(divIconsLike);
+                divIconsLike.appendChild(iconUnlike);
+                divIconsLike.appendChild(iconLike);
+
         return (article);
     }
 
     // CAROUSSEL   FACTORY //
     // Fonction de mise en forme du caroussel
     function getUserCarousselDOM(){
+        
         const carousselModal = document.createElement('div');
         carousselModal.setAttribute('class', 'caroussel_modal');
         carousselModal.setAttribute('aria-hidden', 'true');
         carousselModal.setAttribute('role', 'dialog');
-        carousselModal.setAttribute('aria-describedby', 'modalTitle');
+        carousselModal.setAttribute('aria-describedby', 'modalTitle');        
 
-        const carousselBox = document.createElement('div');
-        
-        const previousBtn = document.createElement('i');
-        previousBtn.setAttribute('class', 'fa-solid fa-chevron-left');
-        
         let mediaElementZoom = undefined;
 
         if( image && !video) {
@@ -88,21 +106,17 @@ function mediaFactory(data, photographerName) {
             sourceVideoZoom.setAttribute('src', videoLink);
             sourceVideoZoom.setAttribute('type', "video/mp4");
 
-            mediaElementZoom.appendChild(sourceVideo);
+            mediaElementZoom.appendChild(sourceVideoZoom);
         };
+        
+        // Constante photoTitle = création de l'élément 'h2' dans le DOM
+        const photoTitle = document.createElement('h2');
+        photoTitle.innerText = title;
+        photoTitle.setAttribute('class', 'carousselPhotoTitle');
 
-        const nextBtn= document.createElement('i');
-        nextBtn.setAttribute('class', 'fa-solid fa-chevron-right');
+        carousselModal.appendChild(mediaElementZoom);
+        carousselModal.appendChild(photoTitle);
 
-        const closeBtn = document.createElement('i');
-        closeBtn.setAttribute('class', 'fa-solid fa-xmark');
-        closeBtn.setAttribute('id', 'closeCarousselBtn');
-
-        carousselBox.appendChild(previousBtn);
-        carousselBox.appendChild(mediaElementZoom);
-        carousselBox.appendChild(nextBtn);
-        carousselModal.appendChild(carousselBox);
-        carousselModal.appendChild(closeBtn);
 
         return (carousselModal);
     }

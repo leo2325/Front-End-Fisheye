@@ -73,3 +73,30 @@ h1 {
     font-size: 10px;
     color: grey;
 }
+
+
+
+
+
+
+/*  LIKE SYSTEM */
+
+.bannerPhotographerDescriptionBox, .likeSystem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.likeSystem {
+    width: 20%;
+}
+.iconsLike {
+    width: 20px;
+    display: flex;
+    flex-direction: row;
+}
+.iconsLike :last-child {
+    background-color: none;
+    position: absolute;
+    display: none;
+}

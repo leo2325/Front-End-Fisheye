@@ -18,7 +18,7 @@ async function displayPhotographerData(photographer) {
     const titleContactFormSection = document.querySelector("#modal header");
 
     const photographerModel = photographerFactory(photographer);
-    
+
     const userBannerDOM = photographerModel.getUserBannerDOM();
     const userBannerDOMPortrait = photographerModel.getUserBannerDOMPortrait();
     const UserBannerDOMLikeAndPrice = photographerModel.getUserBannerDOMLikeAndPrice();
@@ -26,7 +26,7 @@ async function displayPhotographerData(photographer) {
 
     photographSection.appendChild(userBannerDOM);
     photographSection.appendChild(userBannerDOMPortrait);
-    bannerBottomSection.appendChild(UserBannerDOMLikeAndPrice);    
+    bannerBottomSection.appendChild(UserBannerDOMLikeAndPrice);
     titleContactFormSection.appendChild(userNameDOMContactForm);
 };
 
@@ -37,6 +37,8 @@ async function init(photographID) {
 
     const medias = await getPictures(photographID);
     displayMediaData(medias, photographer.name);
+    displayCaroussel(medias, photographer.name);
+    addMediaListenerToOpenCaroussel();
 };
 
 //Fonction asynchrone de récupération des données
@@ -59,40 +61,30 @@ function displayMediaData(media, photographerName) {
         mediaSection.appendChild(userBookDOM);
     });
 
-     
-};init(photographID);  
+
+}; init(photographID);
 
 
 
 
-function displayCaroussel(media, photographerName) {
-    const mediaSection = document.querySelector("#caroussel_modal_box");
-    
-    media.forEach((media) => {
+function displayCaroussel(medias, photographerName) {
+    const mediaSection = document.querySelector("#carousselMediasBox");
+
+    medias.forEach((media) => {
         const mediaModel = mediaFactory(media, photographerName);
         const carousselDom = mediaModel.getUserCarousselDOM();
         mediaSection.appendChild(carousselDom);
     });
-
-
-//creer constantes pour les fleches precedentes et suivantes
-//leur assigner le changement de photos
-//faire le design en css
-
-
-// possibilité de cliquer sur le média via un a href ou sans ? 
-
-// est ce que je dois créer charger l'ensemble des photos, et ensuite gérer le changement d'image ?
-// oiu est ce que je dois charger les images seulement une fois que c'est leur tour d'etre zoomé ? 
-
-init(photographID);    
-
 }
 
+function addMediaListenerToOpenCaroussel() {
+    const carousselBtn = document.getElementsByClassName("bannerPhotographerBox");
 
+    for (const btn in carousselBtn) {
+        if (Object.hasOwnProperty.call(carousselBtn, btn)) {
+            const element = carousselBtn[btn];
 
-
-
-media.forEach((media) => {
-
-})
+            element.addEventListener("click", launchCaroussel);
+        }
+    }
+}
