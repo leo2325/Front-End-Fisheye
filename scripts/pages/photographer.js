@@ -66,6 +66,7 @@ function displayMediaData(media, photographerName) {
 
 
 
+// CAROUSSEL
 
 function displayCaroussel(medias, photographerName) {
     const mediaSection = document.querySelector("#carousselMediasBox");
@@ -78,7 +79,7 @@ function displayCaroussel(medias, photographerName) {
 }
 
 function addMediaListenerToOpenCaroussel() {
-    const carousselBtn = document.getElementsByClassName("bannerPhotographerBox");
+    const carousselBtn = document.getElementsByClassName("mediaElement");
 
     for (const btn in carousselBtn) {
         if (Object.hasOwnProperty.call(carousselBtn, btn)) {
@@ -88,3 +89,5 @@ function addMediaListenerToOpenCaroussel() {
         }
     }
 }
+
+
