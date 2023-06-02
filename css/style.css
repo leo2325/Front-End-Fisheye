@@ -89,14 +89,23 @@ h1 {
 }
 .likeSystem {
     width: 20%;
+    cursor: pointer;
 }
 .iconsLike {
     width: 20px;
     display: flex;
     flex-direction: row;
 }
-.iconsLike :last-child {
-    background-color: none;
-    position: absolute;
-    display: none;
+
+
+
+
+
+
+
+
+
+#sortListSystem {
+    width: 100%;
+    margin: 2% 10% 0;
 }

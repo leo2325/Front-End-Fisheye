@@ -72,39 +72,6 @@ function photographerFactory(data) {
         return (divPortrait);
     }
 
-    // Fonction qui crée le contenu de la bannière situé en bas à droite de l'écran 
-    //(le nombre de likes total ainsi que le tarif du photographe)
-    function getUserBannerDOMLikeAndPrice() {
-        
-        // DIV contenant l'ensemble des éléments 
-        const bannerLikeAndPrice = document.createElement('div');
-        bannerLikeAndPrice.setAttribute('id', 'bannerLikeAndPrice');
-        
-        // Div contenant les éléments concernant les likes
-        const likeElements = document.createElement('div');
-        likeElements.setAttribute('id', 'likeElementsBox');
-        
-        // Création de la constante qui contiendra le nombre de likes
-        const totalLikeElement = document.createElement('p');
-        totalLikeElement.setAttribute('id', 'totalLikes');
-        totalLikeElement.innerText = '200';
-        
-        // Création de la constante contenant les icônes likes
-        const iconLikeElement = document.createElement('i');
-        iconLikeElement.setAttribute('class', 'fa-solid fa-heart');
-        
-        // Création de la constante price = création de l'élément p dans le DOM
-        const priceElement = document.createElement('p');
-        priceElement.innerText = price + "€/jour";
-
-        likeElements.appendChild(totalLikeElement);
-        likeElements.appendChild(iconLikeElement);
-        bannerLikeAndPrice.appendChild(likeElements);
-        bannerLikeAndPrice.appendChild(priceElement);
-
-        return (bannerLikeAndPrice);
-    }
-
     // Fonction de récupération du nom du photographe dans le formulaire.
     function getUserNameDOMContactForm() {
         const titleContactForm = document.createElement('div')

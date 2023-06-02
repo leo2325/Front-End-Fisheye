@@ -1,40 +1,20 @@
+function moreLike(e) {
 
-function moreLike() { 
+        const numberOfLike = document.getElementsByClassName('numberOfLike');
+        const totalLikeElement = document.getElementById('totalLikes');
     
-    const iconLike = document.getElementById('like');
-    const iconUnlike = document.getElementsByClassName('unlike');
-    const numberOfLike = document.getElementsByClassName('numberOfLike').value;
-    const totalLikeElement = document.getElementById('totalLikes');
-
-    if( iconLike.style.display == flex) {
-
-        iconLike.style.display = 'none';
-        iconUnlike.style.display = 'block';
+        const countHtml = e.currentTarget.firstChild;
+        const iconHtml = e.currentTarget.lastChild.firstChild;
     
-        numberOfLike = undefined ;
-        for (let i = 0; i < numberOfLike; i++) {
-            console.log("Photo liké");
-        }
-
-        totalLikeElement = undefined ;
-        for (let i = 0; i < numberOfLike; i++) {
-            console.log("Photo liké");
-        }
-    }
-
-    else {
-
-        iconLike.style.display = 'block';
-        iconUnlike.style.display = 'none'; 
-    
-        numberOfLike = undefined ;
-            for (let i = 0; i < numberOfLike; i--) {
-            console.log("Photo unliké");
-            }
-
-        totalLikeElement = undefined ;
-
-    }
-};
-const carousselBtn = document.querySelector(".likeSystem");
-carousselBtn.addEventListener("click", moreLike);
+        if (iconHtml.classList.contains('fa-solid')) {
+            iconHtml.classList.remove('fa-solid');
+            iconHtml.classList.add('fa-regular');
+            countHtml.innerText = parseInt(countHtml.innerText) - 1;
+            totalLikeElement.innerText = parseInt(totalLikeElement.innerText) - 1;
+        } else {
+            countHtml.innerText = parseInt(countHtml.innerText) + 1;
+            iconHtml.classList.add('fa-solid');
+            iconHtml.classList.remove('fa-regular');
+            totalLikeElement.innerText = parseInt(totalLikeElement.innerText) + 1;
+        };
+    };

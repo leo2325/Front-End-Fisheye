@@ -1,5 +1,5 @@
 function mediaFactory(data, photographerName) {
-    
+
     const { id, photographerId, title, image, video, likes } = data;
     // On récupère la partie correspondante du nom du photographe
     const photographerFirstName = photographerName.split(' ');
@@ -16,7 +16,7 @@ function mediaFactory(data, photographerName) {
 
         let mediaElement = undefined;
 
-        if( image && !video) {
+        if (image && !video) {
             // constante image = création de l'élément 'img' dans le DOM 
             mediaElement = document.createElement('img');
             mediaElement.src = picture;
@@ -49,7 +49,7 @@ function mediaFactory(data, photographerName) {
 
         const numberOfLike = document.createElement('p');
         numberOfLike.setAttribute('class', 'numberOfLike');
-        numberOfLike.innerText = '0';
+        numberOfLike.innerText = likes;
 
         const divIconsLike = document.createElement('div');
         divIconsLike.setAttribute('class', 'iconsLike')
@@ -58,38 +58,32 @@ function mediaFactory(data, photographerName) {
         iconUnlike.setAttribute('class', 'fa-regular fa-heart');
         iconUnlike.setAttribute('id', 'unlike');
 
-        const iconLike = document.createElement('i');
-        iconLike.setAttribute('class' , 'fa-solid fa-heart');
-        iconLike.setAttribute('id', 'like');
 
-        
         // Création des éléments enfants de l'article, placé à la suite les uns des
         article.appendChild(mediaElement);
         article.appendChild(div);
         div.appendChild(photoTitle);
-        
-        div.appendChild(likeSystem);
-            likeSystem.appendChild(numberOfLike);
-            likeSystem.appendChild(divIconsLike);
-                divIconsLike.appendChild(iconUnlike);
-                divIconsLike.appendChild(iconLike);
 
+        div.appendChild(likeSystem);
+        likeSystem.appendChild(numberOfLike);
+        likeSystem.appendChild(divIconsLike);
+        divIconsLike.appendChild(iconUnlike);
         return (article);
     }
 
     // CAROUSSEL   FACTORY //
     // Fonction de mise en forme du caroussel
-    function getUserCarousselDOM(){
-        
+    function getUserCarousselDOM() {
+
         const carousselModal = document.createElement('div');
         carousselModal.setAttribute('class', 'caroussel_modal');
         carousselModal.setAttribute('aria-hidden', 'true');
         carousselModal.setAttribute('role', 'dialog');
-        carousselModal.setAttribute('aria-describedby', 'modalTitle');        
+        carousselModal.setAttribute('aria-describedby', 'modalTitle');
 
         let mediaElementZoom = undefined;
 
-        if( image && !video) {
+        if (image && !video) {
             // constante image = création de l'élément 'img' dans le DOM 
             mediaElementZoom = document.createElement('img');
             mediaElementZoom.src = picture;
@@ -108,7 +102,7 @@ function mediaFactory(data, photographerName) {
 
             mediaElementZoom.appendChild(sourceVideoZoom);
         };
-        
+
         // Constante photoTitle = création de l'élément 'h2' dans le DOM
         const photoTitle = document.createElement('h2');
         photoTitle.innerText = title;

@@ -19,7 +19,7 @@ function launchCaroussel() {
         }
     };
 };
-// Constante bouton ouverture formulaire - "je m'inscris".
+// Constante bouton ouverture du caroussel.
 const carousselBtn = document.querySelector(".mediaElement");
 /* launchModal event */
 carousselBtn.addEventListener("click", launchCaroussel);
@@ -31,6 +31,7 @@ function closeCaroussel() {
     carousselBox.style.display = "none";
     console.log("caroussel fermé"); 
 };
+
 // Constante croix fermeture formulaire.
 const closeCarousselBtn = document.getElementById("closeCarousselBtn");
 /* closeModal event  */
