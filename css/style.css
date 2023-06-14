@@ -88,13 +88,12 @@ h1 {
     justify-content: space-between;
 }
 .likeSystem {
-    width: 20%;
     cursor: pointer;
 }
 .iconsLike {
-    width: 20px;
     display: flex;
     flex-direction: row;
+    margin-left: 10px;
 }
 
 

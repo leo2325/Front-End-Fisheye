@@ -1,6 +1,6 @@
 function mediaFactory(data, photographerName) {
 
-    const { id, photographerId, title, image, video, likes } = data;
+    const { id, photographerId, title, image, video, likes, date } = data;
     // On récupère la partie correspondante du nom du photographe
     const photographerFirstName = photographerName.split(' ');
 
@@ -44,6 +44,22 @@ function mediaFactory(data, photographerName) {
         photoTitle.innerText = title;
         photoTitle.setAttribute('class', 'bannerPhotoTitle');
 
+
+
+
+
+
+        const publishDate = document.createElement('input');
+        publishDate.innerText = date;
+        publishDate.setAttribute('type', 'hidden');
+        publishDate.setAttribute('class', 'publishDate');
+        
+
+
+
+
+        
+
         const likeSystem = document.createElement('div');
         likeSystem.setAttribute('class', 'likeSystem');
 
@@ -63,6 +79,7 @@ function mediaFactory(data, photographerName) {
         article.appendChild(mediaElement);
         article.appendChild(div);
         div.appendChild(photoTitle);
+        div.appendChild(publishDate);
 
         div.appendChild(likeSystem);
         likeSystem.appendChild(numberOfLike);
@@ -70,6 +87,20 @@ function mediaFactory(data, photographerName) {
         divIconsLike.appendChild(iconUnlike);
         return (article);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // CAROUSSEL   FACTORY //
     // Fonction de mise en forme du caroussel
@@ -115,5 +146,5 @@ function mediaFactory(data, photographerName) {
         return (carousselModal);
     }
 
-    return { id, photographerId, title, image, video, likes, getUserBookDOM, getUserCarousselDOM }
+    return { id, photographerId, title, image, video, likes, date, getUserBookDOM, getUserCarousselDOM, sortSystem }
 };

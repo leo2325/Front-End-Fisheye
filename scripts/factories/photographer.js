@@ -88,6 +88,6 @@ function photographerFactory(data) {
         return (titleContactForm);
     }
 
-    return { name, picture, city, country, tagline, price, getUserCardDOM, getUserBannerDOM, getUserBannerDOMPortrait, getUserBannerDOMLikeAndPrice, getUserNameDOMContactForm }
+    return { name, picture, city, country, tagline, price, getUserCardDOM, getUserBannerDOM, getUserBannerDOMPortrait, getUserNameDOMContactForm }
 
 };

@@ -1,7 +1,7 @@
-
 // On récupère l'id du photographe contenu dans l'URL
 let params = (new URL(document.location)).searchParams;
 let photographID = parseInt(params.get('id'));
+// puis on l'affiche dans la console 
 console.log(photographID);
 
 //Fonction asynchrone de récupération des données
@@ -10,10 +10,11 @@ async function getPhotographById(photographID) {
     const reponse = await fetch('./data/photographers.json');
     const photographFiche = await reponse.json();
 
+    // retourne l'id du photographe du fichier json, qui correpsond à l'id du photographe dans le dom
     return photographFiche.photographers.find(photographer => photographer.id === photographID);
 }
 
-async function displayPhotographerData(photographer) {
+async function displayPhotographerData(photographer, medias) {
     const photographSection = document.querySelector('.photograph-header');
     const bannerBottomSection = document.querySelector('body');
     const titleContactFormSection = document.querySelector('#modal header');
@@ -21,9 +22,12 @@ async function displayPhotographerData(photographer) {
 
     const userBannerDOM = photographerModel.getUserBannerDOM();
     const userBannerDOMPortrait = photographerModel.getUserBannerDOMPortrait();
-    const UserBannerDOMLikeAndPrice = getUserBannerDOMLikeAndPrice();
+    const likes = medias.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue.likes;
+    }, 0);
+    const UserBannerDOMLikeAndPrice = getUserBannerDOMLikeAndPrice(likes, photographer.price);
     const userNameDOMContactForm = photographerModel.getUserNameDOMContactForm();
- 
+
     photographSection.appendChild(userBannerDOM);
     photographSection.appendChild(userBannerDOMPortrait);
     bannerBottomSection.appendChild(UserBannerDOMLikeAndPrice);
@@ -33,12 +37,10 @@ async function displayPhotographerData(photographer) {
 async function init(photographID) {
     // Récupère les datas des photographes
     const photographer = await getPhotographById(photographID);
-    displayPhotographerData(photographer);
- 
     const medias = await getPictures(photographID);
+    displayPhotographerData(photographer, medias);
     displayMediaData(medias, photographer.name);
     displayCaroussel(medias, photographer.name);
-    getUserBannerDOMLikeAndPrice()
     addMediaListenerToOpenCaroussel();
     teste();
 };
@@ -62,7 +64,7 @@ function displayMediaData(media, photographerName) {
         mediaSection.appendChild(userBookDOM);
     });
 
-}; 
+};
 
 init(photographID);
 
@@ -71,37 +73,35 @@ init(photographID);
 
 
 // Fonction qui crée le contenu de la bannière situé en bas à droite de l'écran 
-    //(le nombre de likes total ainsi que le tarif du photographe)
-    function getUserBannerDOMLikeAndPrice(likes, price) {
-        
-        // DIV contenant l'ensemble des éléments 
-        const bannerLikeAndPrice = document.createElement('div');
-        bannerLikeAndPrice.setAttribute('id', 'bannerLikeAndPrice');
-        
-        // Div contenant les éléments concernant les likes
-        const likeElements = document.createElement('div');
-        likeElements.setAttribute('id', 'likeElementsBox');
+//(le nombre de likes total ainsi que le tarif du photographe)
+function getUserBannerDOMLikeAndPrice(likes, price) {
 
-        const totalLikeElement = document.createElement('p');
-        totalLikeElement.setAttribute('id', 'totalLikes');
-        totalLikeElement.innerText = likes;
-        
-        // Création de la constante contenant les icônes likes
-        const iconLikeElement = document.createElement('i');
-        iconLikeElement.setAttribute('class', 'fa-solid fa-heart');
-        // Création de la constante price = création de l'élément p dans le DOM
-        const priceElement = document.createElement('p');
-        priceElement.innerText = price + "€/jour";
+    // DIV contenant l'ensemble des éléments 
+    const bannerLikeAndPrice = document.createElement('div');
+    bannerLikeAndPrice.setAttribute('id', 'bannerLikeAndPrice');
 
-        likeElements.appendChild(totalLikeElement);
-        likeElements.appendChild(iconLikeElement);
-        bannerLikeAndPrice.appendChild(likeElements);
-        bannerLikeAndPrice.appendChild(priceElement);
+    // Div contenant les éléments concernant les likes
+    const likeElements = document.createElement('div');
+    likeElements.setAttribute('id', 'likeElementsBox');
 
-        return (bannerLikeAndPrice);
-    }
+    const totalLikeElement = document.createElement('p');
+    totalLikeElement.setAttribute('id', 'totalLikes');
+    totalLikeElement.innerText = likes;
 
+    // Création de la constante contenant les icônes likes
+    const iconLikeElement = document.createElement('i');
+    iconLikeElement.setAttribute('class', 'fa-solid fa-heart');
+    // Création de la constante price = création de l'élément p dans le DOM
+    const priceElement = document.createElement('p');
+    priceElement.innerText = price + "€/jour";
 
+    likeElements.appendChild(totalLikeElement);
+    likeElements.appendChild(iconLikeElement);
+    bannerLikeAndPrice.appendChild(likeElements);
+    bannerLikeAndPrice.appendChild(priceElement);
+
+    return (bannerLikeAndPrice);
+};
 
 
 
@@ -118,6 +118,8 @@ function displayCaroussel(medias, photographerName) {
         mediaSection.appendChild(carousselDom);
     });
 }
+
+
 function teste() {
     const likeBtn = document.getElementsByClassName('likeSystem');
     for (const e in likeBtn) {
@@ -127,6 +129,8 @@ function teste() {
         }
     }
 }
+
+
 function addMediaListenerToOpenCaroussel() {
     const carousselBtn = document.getElementsByClassName('mediaElement');
     for (const btn in carousselBtn) {

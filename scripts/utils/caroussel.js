@@ -19,11 +19,6 @@ function launchCaroussel() {
         }
     };
 };
-// Constante bouton ouverture du caroussel.
-const carousselBtn = document.querySelector(".mediaElement");
-/* launchModal event */
-carousselBtn.addEventListener("click", launchCaroussel);
-
 
 // FERMETURE DU CAROUSSEL
 // close modal caroussel - fonction de fermeture du caroussel

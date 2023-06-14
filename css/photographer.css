@@ -142,13 +142,41 @@ form .allBtn {
 
 
 
+/* STYLE SYSTÈME DE TRI */
+#sortListSystem {
+    width: 300px;
+    margin: 20px 100px 50px;
+}
+#sortListBox {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#sortListBox label{
+    font-size: 16px;
+    font-weight: 400;
+}
+#sortList{
+    cursor: pointer;
+    background-color: #901C1C;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    padding: 10px;
+}
+#sortList option{
+    background-color: #901C1C;
+}
+
 
 
 
 
 
 .photograph_book {
-    margin: 100px;
+    margin: 0 100px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     row-gap: 4em;
@@ -158,7 +186,7 @@ form .allBtn {
 .bannerPhotographerBox {
     color: #901C1C;
     font-weight: 100;
-    grid-column: 30%;
+    width: 350px;
 }
 
 .mediaElement {
@@ -268,3 +296,77 @@ form .allBtn {
     width: 100%;
 }
 
+
+
+
+
+
+
+
+
+
+
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .9);
+    z-index: 995;
+}
+
+.lightbox button {
+    font-size: 100px;
+    background-color: transparent;
+    color: #FAFAFA;
+    opacity: .5;
+    transition: opacity .3s;
+    cursor: pointer;
+}
+.lightbox button:hover {
+    opacity: 1;
+}
+.lightbox__next, 
+.lightbox__prev {
+    border: none;
+    position: fixed;
+    top: 50%;
+    margin-top: 14px;
+    z-index: 996;
+}
+.lightbox__next {
+    right: 0;
+}
+.lightbox__prev {
+    left: 0;
+}
+.lightbox__close {
+    border: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+.lightbox__container {
+    margin: 0 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    
+}
+
+/* REVOIR LE DIMENSIONNEMENT DES IMAGES/VIDEOS */
+.lightbox__container img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.lightbox__loader {
+    width: 100px;
+    height: 100px;
+    opacity: .5;
+    background: url(./assets/loader.svg) center center no-repeat;
+}

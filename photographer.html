@@ -26,12 +26,12 @@
 
     <div id="sortListSystem">
 
-      <form action="">
-        <label for="sortList"></label>
+      <form action="" id="sortListBox">
+        <label for="sortList">Trier par</label>
         <select id="sortList" name="sorList">
-            <option value="Popularité">Popularité</option>
-            <option value="Date">Date</option>
-            <option value="Titre">Titre</option>
+            <option id="byPopularity" value="Popularité">Popularité</option>
+            <option id="byDate" value="Date">Date</option>
+            <option id="byName" value="Titre">Titre</option>
         </select>
       </form>
 
@@ -83,13 +83,20 @@
       </div>
     </div>
 
+
+
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/factories/media.js"></script>
+
     <script src="scripts/pages/photographer.js"></script>
+
     <script src="scripts/utils/contactForm.js"></script>
     <script src="scripts/utils/caroussel.js"></script>
+    <script src="scripts/utils/lightbox.js" type="module" defer></script>
+    
     <script src="scripts/utils/likeSystem.js"></script>
     <script src="scripts/utils/sortSystem.js"></script>
+
     <script src="https://kit.fontawesome.com/6877221263.js"></script>
   </body>
 </html>
