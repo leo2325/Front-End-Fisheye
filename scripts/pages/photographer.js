@@ -40,8 +40,7 @@ async function init(photographID) {
     const medias = await getPictures(photographID);
     displayPhotographerData(photographer, medias);
     displayMediaData(medias, photographer.name);
-    displayCaroussel(medias, photographer.name);
-    addMediaListenerToOpenCaroussel();
+    
     teste();
 };
 
@@ -63,11 +62,11 @@ function displayMediaData(media, photographerName) {
         const userBookDOM = mediaModel.getUserBookDOM();
         mediaSection.appendChild(userBookDOM);
     });
-
+    Lightbox.init();
 };
 
-init(photographID);
 
+init(photographID);
 
 
 
@@ -104,39 +103,12 @@ function getUserBannerDOMLikeAndPrice(likes, price) {
 };
 
 
-
-
-
-
-// CAROUSSEL
-
-function displayCaroussel(medias, photographerName) {
-    const mediaSection = document.querySelector('#carousselMediasBox');
-    medias.forEach((media) => {
-        const mediaModel = mediaFactory(media, photographerName);
-        const carousselDom = mediaModel.getUserCarousselDOM();
-        mediaSection.appendChild(carousselDom);
-    });
-}
-
-
 function teste() {
     const likeBtn = document.getElementsByClassName('likeSystem');
     for (const e in likeBtn) {
         if (Object.hasOwnProperty.call(likeBtn, e)) {
             const element = likeBtn[e];
             element.addEventListener('click', moreLike);
-        }
-    }
-}
-
-
-function addMediaListenerToOpenCaroussel() {
-    const carousselBtn = document.getElementsByClassName('mediaElement');
-    for (const btn in carousselBtn) {
-        if (Object.hasOwnProperty.call(carousselBtn, btn)) {
-            const element = carousselBtn[btn];
-            element.addEventListener('click', launchCaroussel);
-        }
-    }
+        };
+    };
 };
