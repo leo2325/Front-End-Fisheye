@@ -18,6 +18,7 @@ async function displayPhotographerData(photographer, medias) {
     const photographSection = document.querySelector('.photograph-header');
     const bannerBottomSection = document.querySelector('body');
     const titleContactFormSection = document.querySelector('#modal header');
+    // eslint-disable-next-line
     const photographerModel = photographerFactory(photographer);
 
     const userBannerDOM = photographerModel.getUserBannerDOM();
@@ -32,7 +33,7 @@ async function displayPhotographerData(photographer, medias) {
     photographSection.appendChild(userBannerDOMPortrait);
     bannerBottomSection.appendChild(UserBannerDOMLikeAndPrice);
     titleContactFormSection.appendChild(userNameDOMContactForm);
-};
+}
 
 async function init(photographID) {
     // Récupère les datas des photographes
@@ -42,7 +43,7 @@ async function init(photographID) {
     displayMediaData(medias, photographer.name);
     
     teste();
-};
+}
 
 //Fonction asynchrone de récupération des données
 async function getPictures(ID) {
@@ -58,12 +59,14 @@ async function getPictures(ID) {
 function displayMediaData(media, photographerName) {
     const mediaSection = document.querySelector('.photograph_book');
     media.forEach((media) => {
+        // eslint-disable-next-line
         const mediaModel = mediaFactory(media, photographerName);
         const userBookDOM = mediaModel.getUserBookDOM();
         mediaSection.appendChild(userBookDOM);
     });
+    // eslint-disable-next-line
     Lightbox.init();
-};
+}
 
 
 init(photographID);
@@ -100,8 +103,30 @@ function getUserBannerDOMLikeAndPrice(likes, price) {
     bannerLikeAndPrice.appendChild(priceElement);
 
     return (bannerLikeAndPrice);
-};
+}
 
+
+
+
+function moreLike(e) {
+
+    const totalLikeElement = document.getElementById('totalLikes');
+
+    const countHtml = e.currentTarget.firstChild;
+    const iconHtml = e.currentTarget.lastChild.firstChild;
+
+    if (iconHtml.classList.contains('fa-solid')) {
+        iconHtml.classList.remove('fa-solid');
+        iconHtml.classList.add('fa-regular');
+        countHtml.innerText = parseInt(countHtml.innerText) - 1;
+        totalLikeElement.innerText = parseInt(totalLikeElement.innerText) - 1;
+    } else {
+        countHtml.innerText = parseInt(countHtml.innerText) + 1;
+        iconHtml.classList.add('fa-solid');
+        iconHtml.classList.remove('fa-regular');
+        totalLikeElement.innerText = parseInt(totalLikeElement.innerText) + 1;
+    }
+}
 
 function teste() {
     const likeBtn = document.getElementsByClassName('likeSystem');
@@ -109,6 +134,6 @@ function teste() {
         if (Object.hasOwnProperty.call(likeBtn, e)) {
             const element = likeBtn[e];
             element.addEventListener('click', moreLike);
-        };
-    };
-};
+        }
+    }
+}

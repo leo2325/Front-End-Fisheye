@@ -1,5 +1,6 @@
+// eslint-disable-next-line
 function contactFormFactory(data) {
-    const { id, name } = data;
+    const { name } = data;
 
     function getUserNameDOM(){
         const photographerNameBox = document.getElementById('modal').header;
@@ -11,5 +12,5 @@ function contactFormFactory(data) {
         return (photographerNameBox);
     }
     return { name, getUserNameDOM }
-};
+}
 

@@ -1,11 +1,12 @@
 // DECLARATION DE CONSTANTES & VARIABLES
-// Div contenant l'ensemble du formulaire 
-const sortSystemBox = document.getElementById('sortListSystem');
 // Element select contenant les différentes options 
 const sortList = document.getElementById('sortList');
 
+/**
+ * Fonction de tri des images 
+ */
 function sortSystem() {
-    // constante BOOK
+    // constante BOOK photographe
     const bookBox = document.querySelector('.photograph_book') ;
     // création d'un tableau contenant chacun des éléments du BOOK.
     const bookElements = Array.from(document.querySelectorAll('.bannerPhotographerBox'));
@@ -13,9 +14,7 @@ function sortSystem() {
     bookBox.innerHTML = '';
 
     if( sortList.value === "Popularité" ){
-     
         bookElements.sort(function (a, b) {
-     
             const popularityA = a.getElementsByClassName("numberOfLike");
             const popularityValueA = parseInt(popularityA[0].innerText);
 
@@ -26,27 +25,23 @@ function sortSystem() {
         });
     }
     else if( sortList.value === "Date" ){
-     
         bookElements.sort(function (a, b) {
-     
             const dateA = a.getElementsByClassName('publishDate');
-            const dateValueA = parseInt(dateA[0].innerText);
+            const dateValueA = new Date(dateA[0].innerText);
 
             const dateB = b.getElementsByClassName('publishDate');
-            const dateValueB = parseInt(dateB[0].innerText);
+            const dateValueB = new Date(dateB[0].innerText);
           
-            return dateValueA - dateValueB;
+            return dateValueB - dateValueA;
         });
     }
     else {
-     
         bookElements.sort(function (a, b) {
-
             const titleA = a.getElementsByClassName('bannerPhotoTitle');
-            const titleValueA = titleA.value;
+            const titleValueA = titleA[0].innerText;
 
             const titleB = b.getElementsByClassName('bannerPhotoTitle');
-            const titleValueB = titleB.value;
+            const titleValueB = titleB[0].innerText;
 
             if(titleValueA < titleValueB){
                 return -1;
@@ -60,6 +55,5 @@ function sortSystem() {
         });
     }
     bookElements.forEach(el => bookBox.append(el));
-};
-
+}
 sortList.addEventListener("change", sortSystem);

@@ -22,21 +22,31 @@
         <button id="contact_button" class="allBtn">Contactez-moi</button>
       </div>  
     </main>
-
-
+<!-- 
     <div id="sortListSystem">
-
       <form action="" id="sortListBox">
         <label for="sortList">Trier par</label>
         <select id="sortList" name="sorList">
-            <option id="byPopularity" value="Popularité">Popularité</option>
-            <option id="byDate" value="Date">Date</option>
-            <option id="byName" value="Titre">Titre</option>
+            <option value="Popularité">Popularité</option>
+            <option value="Date">Date</option>
+            <option value="Titre">Titre</option>
         </select>
       </form>
-
     </div>
-
+--> 
+  
+    <div id="sortListSystem>">
+      <div id="sortListBox2">
+        <p>Trier par</p>
+        <ul id="sortList">
+          <li id="byPopularity">Popularité<i class="fa-solid fa-chevron-up"></i></li>
+          <li id="byDate">Date</li>
+          <li id="byName">Titre</li>
+        </ul>
+      </div>
+    <div>
+ 
+  
 
     <div class="photograph_book"></div>
     
@@ -74,25 +84,16 @@
 		</div>
 
 
-    <div id="caroussel_modal_box">
-      <i class="fa-solid fa-chevron-left"></i>
-      <div id="carousselMediasBox"></div>
-      <div id="controlBtnRightSide">
-        <button id="closeCarousselBtn"><i class="fa-solid fa-xmark" ></i></button>
-        <i class="fa-solid fa-chevron-right"></i>
-      </div>
-    </div>
 
 
-
+    <script src="scripts/utils/lightbox.js"></script>
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/factories/media.js"></script>
 
     <script src="scripts/pages/photographer.js"></script>
 
     <script src="scripts/utils/contactForm.js"></script>
-    <script src="scripts/utils/caroussel.js"></script>
-    <script src="scripts/utils/lightbox.js" type="module" defer></script>
+    
     
     <script src="scripts/utils/likeSystem.js"></script>
     <script src="scripts/utils/sortSystem.js"></script>

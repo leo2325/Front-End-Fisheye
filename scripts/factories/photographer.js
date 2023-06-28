@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 function photographerFactory(data) {
     const { id, portrait, name, city, country, tagline, price } = data;
 
@@ -90,4 +91,4 @@ function photographerFactory(data) {
 
     return { name, picture, city, country, tagline, price, getUserCardDOM, getUserBannerDOM, getUserBannerDOMPortrait, getUserNameDOMContactForm }
 
-};
+}
