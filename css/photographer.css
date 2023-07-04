@@ -167,6 +167,7 @@ form .allBtn {
     border-radius: 5px;
     padding: 0 10px;
     position: absolute;
+    z-index: 1000;
     left: 20%;
 }
 

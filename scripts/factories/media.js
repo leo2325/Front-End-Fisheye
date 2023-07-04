@@ -21,13 +21,17 @@ function mediaFactory(data, photographerName) {
             mediaElement = document.createElement('img');
             mediaElement.src = picture;
             mediaElement.setAttribute('class', 'mediaElement');
+            // Element Alt pour accessibilité
+            mediaElement.setAttribute('alt', title)
         }
         else {
 
             // constante video = création de l'élément 'video' dans le DOM 
             mediaElement = document.createElement('video');
             mediaElement.setAttribute('class', 'mediaElement');
-            mediaElement.setAttribute('controls', '');
+            // Element Alt pour accessibilité
+            mediaElement.setAttribute('alt', title)
+            mediaElement.setAttribute('controls', ''); 
 
             let sourceVideo = document.createElement('source');
             sourceVideo.setAttribute('src', videoLink);

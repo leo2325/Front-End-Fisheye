@@ -16,6 +16,8 @@ function photographerFactory(data) {
         // constante image = création de l'élément 'img' dans le DOM 
         const imgElement = document.createElement('img');
         imgElement.src = picture;
+        // Alt accessibilité du site
+        imgElement.setAttribute('alt', name)
         // Constante h2 = création de l'élément 'h2' dans le DOM
         const nameElement = document.createElement('h2');
         nameElement.innerText = name;
@@ -68,7 +70,8 @@ function photographerFactory(data) {
         // constante image = création de l'élément 'img' dans le DOM 
         const imgElement = document.createElement('img');
         imgElement.src = picture;
-
+        // Alt accessibilité du site
+        imgElement.setAttribute('alt', name)
         divPortrait.appendChild(imgElement);
         return (divPortrait);
     }

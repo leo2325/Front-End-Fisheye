@@ -37,6 +37,7 @@ class Lightbox {
 
             const mediaElement = document.createElement('video');
             mediaElement.setAttribute('class', 'mediaElement');
+            mediaElement.setAttribute('alt', 'Video cliquée plein écran');
             mediaElement.setAttribute('controls', '');
 
             let sourceVideo = document.createElement('source');
