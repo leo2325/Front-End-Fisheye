@@ -1,37 +1,54 @@
 // DECLARATION DE CONSTANTES & VARIABLES
 // Element select contenant les différentes options 
-const sortList = document.getElementById('sortList');
+const byPopularity = document.getElementById('byPopularity');
+const byDate = document.getElementById('byDate');
+const byName = document.getElementById('byName');
+const byPopularityIcon = document.getElementById('byPopularityIcon');
+
+byPopularity.addEventListener('click', sortSystem);
+byDate.addEventListener("click", sortSystem);
+byName.addEventListener("click", sortSystem);
+
+/* Fonction dérouler la sortList */
+function launchSortlist(){
+        byDate.classList.toggle('visible');
+        byName.classList.toggle('visible');
+        byPopularityIcon.classList.toggle('rotated');
+    }
+/* Evenement affichage de la classList */
+byPopularityIcon.addEventListener('click', launchSortlist);  
 
 /**
  * Fonction de tri des images 
  */
-function sortSystem() {
+function sortSystem(event) {
+    const selectedValue = event.target.getAttribute('id');
     // constante BOOK photographe
-    const bookBox = document.querySelector('.photograph_book') ;
+    const bookBox = document.querySelector('.photograph_book');
     // création d'un tableau contenant chacun des éléments du BOOK.
     const bookElements = Array.from(document.querySelectorAll('.bannerPhotographerBox'));
     //Remplacement du contenu du BOOK par une chaîne vide.
     bookBox.innerHTML = '';
 
-    if( sortList.value === "Popularité" ){
+    if (selectedValue === "byPopularity") {
         bookElements.sort(function (a, b) {
             const popularityA = a.getElementsByClassName("numberOfLike");
             const popularityValueA = parseInt(popularityA[0].innerText);
 
-            const popularityB = b.getElementsByClassName("numberOfLike");  
+            const popularityB = b.getElementsByClassName("numberOfLike");
             const popularityValueB = parseInt(popularityB[0].innerText);
-            
-            return popularityValueB - popularityValueA;    
+
+            return popularityValueB - popularityValueA;
         });
     }
-    else if( sortList.value === "Date" ){
+    else if (selectedValue === "byDate") {
         bookElements.sort(function (a, b) {
             const dateA = a.getElementsByClassName('publishDate');
             const dateValueA = new Date(dateA[0].innerText);
 
             const dateB = b.getElementsByClassName('publishDate');
             const dateValueB = new Date(dateB[0].innerText);
-          
+
             return dateValueB - dateValueA;
         });
     }
@@ -43,10 +60,10 @@ function sortSystem() {
             const titleB = b.getElementsByClassName('bannerPhotoTitle');
             const titleValueB = titleB[0].innerText;
 
-            if(titleValueA < titleValueB){
+            if (titleValueA < titleValueB) {
                 return -1;
             }
-            else if(titleValueA > titleValueB){
+            else if (titleValueA > titleValueB) {
                 return 1;
             }
             else {
@@ -56,4 +73,3 @@ function sortSystem() {
     }
     bookElements.forEach(el => bookBox.append(el));
 }
-sortList.addEventListener("change", sortSystem);
