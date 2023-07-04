@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Bookez votre photographe favori avec fishEye."> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"> 
+    
+    <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"> 
-    <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    
     <title>Fisheye - photographe </title>
   </head>
+
   <body aria-hidden="false">
-    
+  
     <header>
       <a href="index.html">
         <img src="assets/images/logo.png" class="logo" alt="Logo FishEye"/>
@@ -22,8 +26,6 @@
         <button id="contact_button" class="allBtn">Contactez-moi</button>
       </div>  
     </main>
-
-
   
     <div id="sortListSystem>">
       <div id="sortListBox">
@@ -34,21 +36,16 @@
           <li id="byName" class="visible">Titre</li>
         </ul>
       </div>
-    <div>
- 
-  
+    <div>  
 
     <div class="photograph_book"></div>
-    
 
     <div id="contact_modal">
 			<div id="modal" role="dialog" aria-hidden="true" aria-describedby="modalTitle">
-				
         <header>
           <h2 id="modalTitle">Contactez-moi</h2>
           <img src="assets/icons/close.svg" id="closeModal_Btn" />
         </header>
-				
         <form action="photographer.html" method="get">
             <div class="formData">
               <label for="firstName">Prénom</label>
@@ -66,26 +63,17 @@
               <label for="message">Votre message</label> 
               <input class="text-control" type="text" id="message" name="message"/>
             </div>
-          
           <button class="allBtn" id="sendingBtn">Envoyer</button>
 				</form>
-			
       </div>
 		</div>
-
-
-
 
     <script src="scripts/utils/lightbox.js"></script>
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/factories/media.js"></script>
-
     <script src="scripts/pages/photographer.js"></script>
-
     <script src="scripts/utils/contactForm.js"></script>
-    
     <script src="scripts/utils/sortSystem.js"></script>
-
     <script src="https://kit.fontawesome.com/6877221263.js"></script>
   </body>
 </html>
