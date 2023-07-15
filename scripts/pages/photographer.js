@@ -9,11 +9,11 @@ async function getPhotographById(photographID) {
     // Récupération des données depuis le fichier JSON
     const reponse = await fetch('./data/photographers.json');
     const photographFiche = await reponse.json();
-
     // retourne l'id du photographe du fichier json, qui correpsond à l'id du photographe dans le dom
     return photographFiche.photographers.find(photographer => photographer.id === photographID);
 }
 
+//  
 async function displayPhotographerData(photographer, medias) {
     const photographSection = document.querySelector('.photograph-header');
     const bannerBottomSection = document.querySelector('body');
@@ -41,17 +41,17 @@ async function init(photographID) {
     const medias = await getPictures(photographID);
     displayPhotographerData(photographer, medias);
     displayMediaData(medias, photographer.name);
-    
-    teste();
+
+    // j'appelle addLikeEvent ici parce que les éléments ne sont pas encore présents dans la page  
+    addLikeEvent();
 }
 
 //Fonction asynchrone de récupération des données
+//affichage de la photo de profil du photographe
 async function getPictures(ID) {
-
     // Récupération des données depuis le fichier JSON
     const reponse = await fetch('./data/photographers.json');
     const mediaFiches = await reponse.json();
-
     // et bien retourner le tableau medias seulement une fois récupéré
     return mediaFiches.media.filter(media => media.photographerId === ID);
 }
@@ -68,28 +68,21 @@ function displayMediaData(media, photographerName) {
     Lightbox.init();
 }
 
-
 init(photographID);
-
-
 
 
 // Fonction qui crée le contenu de la bannière situé en bas à droite de l'écran 
 //(le nombre de likes total ainsi que le tarif du photographe)
 function getUserBannerDOMLikeAndPrice(likes, price) {
-
     // DIV contenant l'ensemble des éléments 
     const bannerLikeAndPrice = document.createElement('div');
     bannerLikeAndPrice.setAttribute('id', 'bannerLikeAndPrice');
-
     // Div contenant les éléments concernant les likes
     const likeElements = document.createElement('div');
     likeElements.setAttribute('id', 'likeElementsBox');
-
     const totalLikeElement = document.createElement('p');
     totalLikeElement.setAttribute('id', 'totalLikes');
     totalLikeElement.innerText = likes;
-
     // Création de la constante contenant les icônes likes
     const iconLikeElement = document.createElement('i');
     iconLikeElement.setAttribute('class', 'fa-solid fa-heart');
@@ -105,15 +98,11 @@ function getUserBannerDOMLikeAndPrice(likes, price) {
     return (bannerLikeAndPrice);
 }
 
-
-
-
+// Fonction d'incrémentation des likes
 function moreLike(e) {
-
-    const totalLikeElement = document.getElementById('totalLikes');
-
     const countHtml = e.currentTarget.firstChild;
     const iconHtml = e.currentTarget.lastChild.firstChild;
+    const totalLikeElement = document.getElementById('totalLikes');
 
     if (iconHtml.classList.contains('fa-solid')) {
         iconHtml.classList.remove('fa-solid');
@@ -128,7 +117,8 @@ function moreLike(e) {
     }
 }
 
-function teste() {
+// Fonction d'incrémentation des likes photographies
+function addLikeEvent() {
     const likeBtn = document.getElementsByClassName('likeSystem');
     for (const e in likeBtn) {
         if (Object.hasOwnProperty.call(likeBtn, e)) {

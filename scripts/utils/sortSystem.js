@@ -5,10 +5,6 @@ const byDate = document.getElementById('byDate');
 const byName = document.getElementById('byName');
 const byPopularityIcon = document.getElementById('byPopularityIcon');
 
-byPopularity.addEventListener('click', sortSystem);
-byDate.addEventListener("click", sortSystem);
-byName.addEventListener("click", sortSystem);
-
 /* Fonction dérouler la sortList */
 function launchSortlist(){
         byDate.classList.toggle('visible');
@@ -72,4 +68,21 @@ function sortSystem(event) {
         });
     }
     bookElements.forEach(el => bookBox.append(el));
+
+
+    
 }
+
+byPopularity.addEventListener('click', sortSystem);
+byDate.addEventListener("click", sortSystem);
+byName.addEventListener("click", sortSystem);
+
+// Déclenchement de la fonction touche entrée
+function pressEnter(e) {
+    if (e.key === 13) {
+        sortSystem;
+    }
+}
+byPopularity.addEventListener("keyup", pressEnter);
+byDate.addEventListener("keyup", pressEnter);
+byName.addEventListener("keyup", pressEnter);

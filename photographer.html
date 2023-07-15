@@ -23,7 +23,7 @@
     
     <main id="main">
       <div class="photograph-header">
-        <button id="contact_button" class="allBtn">Contactez-moi</button>
+        <button id="contact_button" class="allBtn" aria-describedby="bouton d'ouverture du formulaire de contact">Contactez-moi</button>
       </div>  
     </main>
   
@@ -31,9 +31,9 @@
       <div id="sortListBox">
         <p>Trier par</p>
         <ul id="sortList">
-          <li id="byPopularity">Popularité<i class="fa-solid fa-chevron-down" id="byPopularityIcon"></i></li>
-          <li id="byDate" class="visible">Date</li>
-          <li id="byName" class="visible">Titre</li>
+          <li id="byPopularity" aria-label="classer les photographies par popularité">Popularité<i class="fa-solid fa-chevron-down" id="byPopularityIcon" aria-label="afficher les choix de tri des photographies"></i></li>
+          <li id="byDate" class="visible" aria-describedby="classer par date" aria-label="classer les photographies par date";>Date</li>
+          <li id="byName" class="visible" aria-describedby="classer par titre" aria-label="classer les photographies par titre">Titre</li>
         </ul>
       </div>
     <div>  
@@ -44,26 +44,26 @@
 			<div id="modal" role="dialog" aria-hidden="true" aria-describedby="modalTitle">
         <header>
           <h2 id="modalTitle">Contactez-moi</h2>
-          <img src="assets/icons/close.svg" id="closeModal_Btn" />
+          <img src="assets/icons/close.svg" id="closeModal_Btn" aria-label="Close" aria-describedby="bouton de fermeture du formulaire"/>
         </header>
         <form action="photographer.html" method="get">
             <div class="formData">
               <label for="firstName">Prénom</label>
-              <input class="text-control" type="text" id="firstName" name="firstName" minlength="2"/>
+              <input class="text-control" type="text" id="firstName" name="firstName" minlength="2" aria-describedby="entrer votre prénom"/>
             </div>
             <div class="formData">
               <label for="lastName">Nom</label>  
-              <input class="text-control" type="text" id="lastName" name="lastName"/>
+              <input class="text-control" type="text" id="lastName" name="lastName" aria-describedby="entrer votre nom"/>
             </div>
             <div class="formData">
               <label for="email">E-mail</label> 
-              <input class="text-control" type="text" id="email" name="email"/>
+              <input class="text-control" type="text" id="email" name="email" aria-describedby="entrer votre adresse mail"/>
             </div>
             <div class="formData">
               <label for="message">Votre message</label> 
-              <input class="text-control" type="text" id="message" name="message"/>
+              <input class="text-control" type="text" id="message" name="message" aria-describedby="entrer votre message"/>
             </div>
-          <button class="allBtn" id="sendingBtn">Envoyer</button>
+          <button class="allBtn" id="sendingBtn" aria-label="send form button" aria-describedby="envoyer le formulaire">Envoyer</button>
 				</form>
       </div>
 		</div>

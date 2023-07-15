@@ -1,3 +1,4 @@
+// fonction de navigation de la page d'acceuil à la page photographe
 // eslint-disable-next-line
 function mediaFactory(data, photographerName) {
 

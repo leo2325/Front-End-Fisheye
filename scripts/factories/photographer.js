@@ -9,13 +9,16 @@ function photographerFactory(data) {
     function getUserCardDOM() {
         // Création de la constante article (Articles qui contiennent les fiches de présentation des photographes).
         const article = document.createElement('article');
+        article.setAttribute('aria-label', 'fiche de présentation de' + name);
         // constante linkPhotographers = création de l'élément 'a' dans le DOM
-        // attribut href de l'élément 'a'
         const linkPhotographer = document.createElement('a');
+        // attribut href de l'élément 'a' pour la navigation de la page index à la page photographers 
         linkPhotographer.setAttribute('href', ("photographer.html?id=" + id));
+        linkPhotographer.setAttribute('aria-label', 'lien menant à la page détaillée du photographe' + name);
         // constante image = création de l'élément 'img' dans le DOM 
         const imgElement = document.createElement('img');
         imgElement.src = picture;
+        imgElement.setAttribute('alt', 'photo de profil de' + name);
         // Alt accessibilité du site
         imgElement.setAttribute('alt', name)
         // Constante h2 = création de l'élément 'h2' dans le DOM

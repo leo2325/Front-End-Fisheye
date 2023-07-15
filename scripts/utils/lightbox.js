@@ -119,18 +119,18 @@ class Lightbox {
         dom.classList.add('lightbox');
         dom.innerHTML = 
         `
-            <button class="lightbox__close">
+            <button class="lightbox__close" aria-label="close button" aria-description="Fermer la lightbox" >
                 <i class="fa-solid fa-xmark" ></i>
             </button>      
-            <button class="lightbox__next">
+            <button class="lightbox__next" aria-label="next button" aria-description="afficher la photo suivante">
                 <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button class="lightbox__prev">
+            <button class="lightbox__prev" aria-label="previous button" aria-description="afficher la photo précédente">
                 <i class="fa-solid fa-chevron-left"></i>
             </button>
             <div class="lightbox__container">
             </div>
-            <h2 class="lightBoxPhotoTitle"></h2>
+            <h2 class="lightBoxPhotoTitle" aria-description="titre de la photo"></h2>
         `
         dom.querySelector('.lightbox__close').addEventListener('click', this.close.bind(this));
         dom.querySelector('.lightbox__prev').addEventListener('click', this.prev.bind(this));
