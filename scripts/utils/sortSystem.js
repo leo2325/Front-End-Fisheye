@@ -4,15 +4,17 @@ const byPopularity = document.getElementById('byPopularity');
 const byDate = document.getElementById('byDate');
 const byName = document.getElementById('byName');
 const byPopularityIcon = document.getElementById('byPopularityIcon');
+let menuVisible = false;
 
 /* Fonction dérouler la sortList */
-function launchSortlist(){
-        byDate.classList.toggle('visible');
-        byName.classList.toggle('visible');
-        byPopularityIcon.classList.toggle('rotated');
-    }
+function launchSortlist() {
+    byDate.classList.toggle('visible');
+    byName.classList.toggle('visible');
+    byPopularityIcon.classList.toggle('rotated');
+    menuVisible = !menuVisible;
+}
 /* Evenement affichage de la classList */
-byPopularityIcon.addEventListener('click', launchSortlist);  
+byPopularityIcon.addEventListener('click', launchSortlist);
 
 /**
  * Fonction de tri des images 
@@ -70,7 +72,7 @@ function sortSystem(event) {
     bookElements.forEach(el => bookBox.append(el));
 
 
-    
+
 }
 
 byPopularity.addEventListener('click', sortSystem);
@@ -79,9 +81,15 @@ byName.addEventListener("click", sortSystem);
 
 // Déclenchement de la fonction touche entrée
 function pressEnter(e) {
-    if (e.key === 13) {
-        sortSystem;
+    if (e.keyCode === 13 && !menuVisible) {
+        launchSortlist();
+        return;
     }
+    if (e.keyCode === 13 && menuVisible) {
+        sortSystem(e);
+        launchSortlist();
+    }
+
 }
 byPopularity.addEventListener("keyup", pressEnter);
 byDate.addEventListener("keyup", pressEnter);

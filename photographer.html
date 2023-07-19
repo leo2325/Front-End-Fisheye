@@ -1,79 +1,91 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="description" content="Bookez votre photographe favori avec fishEye."> 
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"> 
-    
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    
-    <title>Fisheye - photographe </title>
-  </head>
 
-  <body aria-hidden="false">
-  
-    <header>
-      <a href="index.html">
-        <img src="assets/images/logo.png" class="logo" alt="Logo FishEye"/>
-      </a>
-    </header>
-    
-    <main id="main">
-      <div class="photograph-header">
-        <button id="contact_button" class="allBtn" aria-describedby="bouton d'ouverture du formulaire de contact">Contactez-moi</button>
-      </div>  
-    </main>
-  
-    <div id="sortListSystem>">
-      <div id="sortListBox">
-        <p>Trier par</p>
-        <ul id="sortList">
-          <li id="byPopularity" aria-label="classer les photographies par popularité">Popularité<i class="fa-solid fa-chevron-down" id="byPopularityIcon" aria-label="afficher les choix de tri des photographies"></i></li>
-          <li id="byDate" class="visible" aria-describedby="classer par date" aria-label="classer les photographies par date";>Date</li>
-          <li id="byName" class="visible" aria-describedby="classer par titre" aria-label="classer les photographies par titre">Titre</li>
-        </ul>
-      </div>
-    <div>  
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Bookez votre photographe favori avec fishEye.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 
-    <div class="photograph_book"></div>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
 
-    <div id="contact_modal">
-			<div id="modal" role="dialog" aria-hidden="true" aria-describedby="modalTitle">
-        <header>
-          <h2 id="modalTitle">Contactez-moi</h2>
-          <img src="assets/icons/close.svg" id="closeModal_Btn" aria-label="Close" aria-describedby="bouton de fermeture du formulaire"/>
-        </header>
-        <form action="photographer.html" method="get">
+  <title>Fisheye - photographe </title>
+</head>
+
+<body aria-hidden="false">
+
+  <header>
+    <a href="index.html">
+      <img src="assets/images/logo.png" class="logo" alt="Logo FishEye" />
+    </a>
+  </header>
+
+  <main id="main">
+    <div class="photograph-header">
+      <button id="contact_button" class="allBtn"
+        aria-describedby="bouton d'ouverture du formulaire de contact">Contactez-moi</button>
+    </div>
+  </main>
+
+  <div id="sortListSystem>">
+    <div id="sortListBox">
+      <p>Trier par</p>
+      <ul id="sortList">
+        <li id="byPopularity" tabindex="1" aria-label="classer les photographies par popularité">Popularité<i
+            class="fa-solid fa-chevron-down" id="byPopularityIcon"
+            aria-label="afficher les choix de tri des photographies"></i></li>
+        <li id="byDate" tabindex="2" class="visible" aria-describedby="classer par date"
+          aria-label="classer les photographies par date" ;>Date</li>
+        <li id="byName" tabindex="3" class="visible" aria-describedby="classer par titre"
+          aria-label="classer les photographies par titre">Titre</li>
+      </ul>
+    </div>
+    <div>
+
+      <div class="photograph_book"></div>
+
+      <div id="contact_modal">
+        <div id="modal" role="dialog" aria-hidden="true" aria-describedby="modalTitle">
+          <header>
+            <h2 id="modalTitle">Contactez-moi</h2>
+            <img src="assets/icons/close.svg" id="closeModal_Btn" aria-label="Close"
+              aria-describedby="bouton de fermeture du formulaire" />
+          </header>
+          <form action="photographer.html" method="get">
             <div class="formData">
               <label for="firstName">Prénom</label>
-              <input class="text-control" type="text" id="firstName" name="firstName" minlength="2" aria-describedby="entrer votre prénom"/>
+              <input class="text-control" type="text" id="firstName" name="firstName" minlength="2"
+                aria-describedby="entrer votre prénom" />
             </div>
             <div class="formData">
-              <label for="lastName">Nom</label>  
-              <input class="text-control" type="text" id="lastName" name="lastName" aria-describedby="entrer votre nom"/>
+              <label for="lastName">Nom</label>
+              <input class="text-control" type="text" id="lastName" name="lastName"
+                aria-describedby="entrer votre nom" />
             </div>
             <div class="formData">
-              <label for="email">E-mail</label> 
-              <input class="text-control" type="text" id="email" name="email" aria-describedby="entrer votre adresse mail"/>
+              <label for="email">E-mail</label>
+              <input class="text-control" type="text" id="email" name="email"
+                aria-describedby="entrer votre adresse mail" />
             </div>
             <div class="formData">
-              <label for="message">Votre message</label> 
-              <input class="text-control" type="text" id="message" name="message" aria-describedby="entrer votre message"/>
+              <label for="message">Votre message</label>
+              <input class="text-control" type="text" id="message" name="message"
+                aria-describedby="entrer votre message" />
             </div>
-          <button class="allBtn" id="sendingBtn" aria-label="send form button" aria-describedby="envoyer le formulaire">Envoyer</button>
-				</form>
+            <button class="allBtn" id="sendingBtn" aria-label="send form button"
+              aria-describedby="envoyer le formulaire">Envoyer</button>
+          </form>
+        </div>
       </div>
-		</div>
 
-    <script src="scripts/utils/lightbox.js"></script>
-    <script src="scripts/factories/photographer.js"></script>
-    <script src="scripts/factories/media.js"></script>
-    <script src="scripts/pages/photographer.js"></script>
-    <script src="scripts/utils/contactForm.js"></script>
-    <script src="scripts/utils/sortSystem.js"></script>
-    <script src="https://kit.fontawesome.com/6877221263.js"></script>
-  </body>
+      <script src="scripts/utils/lightbox.js"></script>
+      <script src="scripts/factories/photographer.js"></script>
+      <script src="scripts/factories/media.js"></script>
+      <script src="scripts/pages/photographer.js"></script>
+      <script src="scripts/utils/contactForm.js"></script>
+      <script src="scripts/utils/sortSystem.js"></script>
+      <script src="https://kit.fontawesome.com/6877221263.js"></script>
+</body>
 </html>
