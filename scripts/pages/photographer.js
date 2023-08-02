@@ -1,8 +1,6 @@
 // On récupère l'id du photographe contenu dans l'URL
 let params = (new URL(document.location)).searchParams;
 let photographID = parseInt(params.get('id'));
-// puis on l'affiche dans la console 
-console.log(photographID);
 
 //Fonction asynchrone de récupération des données
 async function getPhotographById(photographID) {
@@ -70,7 +68,6 @@ function displayMediaData(media, photographerName) {
 
 init(photographID);
 
-
 // Fonction qui crée le contenu de la bannière situé en bas à droite de l'écran 
 //(le nombre de likes total ainsi que le tarif du photographe)
 function getUserBannerDOMLikeAndPrice(likes, price) {
@@ -83,6 +80,7 @@ function getUserBannerDOMLikeAndPrice(likes, price) {
     const totalLikeElement = document.createElement('p');
     totalLikeElement.setAttribute('id', 'totalLikes');
     totalLikeElement.innerText = likes;
+    totalLikeElement.setAttribute('role', 'math')
     // Création de la constante contenant les icônes likes
     const iconLikeElement = document.createElement('i');
     iconLikeElement.setAttribute('class', 'fa-solid fa-heart');

@@ -21,7 +21,6 @@ modalBtn.addEventListener("click", launchModal);
  */
 function closeModal() {
         modal.style.display = "none";
-        console.log("modale fermée"); 
 }
 closeBtn.addEventListener("click", closeModal);
 /**

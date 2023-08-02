@@ -1,9 +1,7 @@
 // eslint-disable-next-line
 function photographerFactory(data) {
     const { id, portrait, name, city, country, tagline, price } = data;
-
     const picture = `assets/photographers/${portrait}`;
-
 
     // Fonction qui génère les fiches de présentation des photographes sur la page index
     function getUserCardDOM() {
@@ -74,7 +72,7 @@ function photographerFactory(data) {
         const imgElement = document.createElement('img');
         imgElement.src = picture;
         // Alt accessibilité du site
-        imgElement.setAttribute('alt', name)
+        imgElement.setAttribute('alt', 'photo portrait de' + name)
         divPortrait.appendChild(imgElement);
         return (divPortrait);
     }

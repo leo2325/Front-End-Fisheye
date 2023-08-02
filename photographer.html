@@ -17,65 +17,60 @@
 <body aria-hidden="false">
 
   <header>
-    <a href="index.html">
-      <img src="assets/images/logo.png" class="logo" alt="Logo FishEye" />
+    <a href="index.html" role="navigation">
+      <img src="assets/images/logo.png" class="logo" alt="Logo FishEye, redirection page d'acceuil" aria-describedby="Logo de redirection vers la page d'acceuil."/>
     </a>
   </header>
 
   <main id="main">
     <div class="photograph-header">
-      <button id="contact_button" class="allBtn"
+      <button id="contact_button" class="allBtn" role="button"
         aria-describedby="bouton d'ouverture du formulaire de contact">Contactez-moi</button>
     </div>
   </main>
 
-  <div id="sortListSystem>">
+  <div id="sortListSystem>" role="list">
     <div id="sortListBox">
       <p>Trier par</p>
       <ul id="sortList">
-        <li id="byPopularity" tabindex="1" aria-label="classer les photographies par popularité">Popularité<i
-            class="fa-solid fa-chevron-down" id="byPopularityIcon"
-            aria-label="afficher les choix de tri des photographies"></i></li>
-        <li id="byDate" tabindex="2" class="visible" aria-describedby="classer par date"
-          aria-label="classer les photographies par date" ;>Date</li>
-        <li id="byName" tabindex="3" class="visible" aria-describedby="classer par titre"
-          aria-label="classer les photographies par titre">Titre</li>
+        <li id="byPopularity" tabindex="1" aria-label="classer les photographies par popularité" role="listitem">Popularité
+          <i class="fa-solid fa-chevron-down" id="byPopularityIcon" aria-label="afficher les choix de tri des photographies"></i>
+        </li>
+        <li id="byDate" tabindex="2" class="visible" aria-labely="classer par date" 
+          role="listitem" aria-label="classer les photographies par date" ;>Date</li>
+        <li id="byName" tabindex="3" class="visible" aria-label="classer par titre"
+          role="listitem" aria-label="classer les photographies par titre">Titre</li>
       </ul>
     </div>
     <div>
 
       <div class="photograph_book"></div>
 
-      <div id="contact_modal">
-        <div id="modal" role="dialog" aria-hidden="true" aria-describedby="modalTitle">
+      <div id="contact_modal" role="form">
+        <div id="modal" role="dialog" aria-describedby="modalTitle">
           <header>
             <h2 id="modalTitle">Contactez-moi</h2>
             <img src="assets/icons/close.svg" id="closeModal_Btn" aria-label="Close"
-              aria-describedby="bouton de fermeture du formulaire" />
+              aria-describedby="bouton de fermeture du formulaire" alt="fermeture du formulaire de contact"/>
           </header>
           <form action="photographer.html" method="get">
             <div class="formData">
               <label for="firstName">Prénom</label>
-              <input class="text-control" type="text" id="firstName" name="firstName" minlength="2"
-                aria-describedby="entrer votre prénom" />
+              <input class="text-control" type="text" id="firstName" name="firstName" minlength="2" aria-label="entrer votre prénom" />
             </div>
             <div class="formData">
               <label for="lastName">Nom</label>
-              <input class="text-control" type="text" id="lastName" name="lastName"
-                aria-describedby="entrer votre nom" />
+              <input class="text-control" type="text" id="lastName" name="lastName" aria-label="entrer votre nom" />
             </div>
             <div class="formData">
               <label for="email">E-mail</label>
-              <input class="text-control" type="text" id="email" name="email"
-                aria-describedby="entrer votre adresse mail" />
+              <input class="text-control" type="email" id="email" name="email" aria-label="entrer votre adresse mail" />
             </div>
             <div class="formData">
               <label for="message">Votre message</label>
-              <input class="text-control" type="text" id="message" name="message"
-                aria-describedby="entrer votre message" />
+              <input class="text-control" type="text" id="message" name="message" aria-label="entrer votre message" />
             </div>
-            <button class="allBtn" id="sendingBtn" aria-label="send form button"
-              aria-describedby="envoyer le formulaire">Envoyer</button>
+            <button class="allBtn" id="sendingBtn" aria-label="Bouton envoyer le formulaire" role="button">Envoyer</button>
           </form>
         </div>
       </div>

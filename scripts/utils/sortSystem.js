@@ -1,5 +1,5 @@
 // DECLARATION DE CONSTANTES & VARIABLES
-// Element select contenant les différentes options 
+// elements de liste contenant les différentes options 
 const byPopularity = document.getElementById('byPopularity');
 const byDate = document.getElementById('byDate');
 const byName = document.getElementById('byName');
