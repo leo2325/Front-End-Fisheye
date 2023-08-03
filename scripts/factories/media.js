@@ -70,8 +70,7 @@ function mediaFactory(data, photographerName) {
 
 
                 const iconUnlike = document.createElement('span');
-                iconUnlike.setAttribute('class', 'fa-regular fa-heart');
-                iconUnlike.setAttribute('id', 'unlike');
+                iconUnlike.setAttribute('class', 'fa-regular fa-heart unlike');
                 iconUnlike.setAttribute('role', 'checkbox');
                 iconUnlike.setAttribute('aria-label', 'aimer la photo');
                 const labelIconUnlike = document.createElement('label');
