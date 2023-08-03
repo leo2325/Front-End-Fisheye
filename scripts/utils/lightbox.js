@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 class Lightbox {
 
-    static init() {
+    static loadImage() {
         const linkss = document.querySelectorAll('.mediaElement');
         const links = Array.from(linkss);
         const images = links.map(link => {
@@ -10,13 +10,29 @@ class Lightbox {
             }
             return link.firstChild.getAttribute('src');
         });
+        return images;
+    }
+
+    static init() {
+        const linkss = document.querySelectorAll('.mediaElement');
+        const links = Array.from(linkss);
 
         links.forEach(link => link.addEventListener('click', e => {
             e.preventDefault();
-            new Lightbox(e.currentTarget.getAttribute('src'), images);
+            const src = e.target instanceof HTMLVideoElement ? e.target.firstChild.getAttribute('src') : e.target.getAttribute('src');
+            new Lightbox(src, this.loadImage());
+        }
+        ));
+        links.forEach(link => link.addEventListener('keyup', e => {
+            if (e.keyCode === 13) {
+                e.preventDefault();
+                const src = e.target instanceof HTMLVideoElement ? e.target.firstChild.getAttribute('src') : e.target.getAttribute('src');
+                new Lightbox(src, this.loadImage());
+            }
         }
         ));
     }
+
 
     /** 
      * @param {string} url lien vers l'image
@@ -49,7 +65,7 @@ class Lightbox {
             loader.classList.add('lightbox__loader');
             container.innerHTML = '';
             container.appendChild(loader);
-         
+
             mediaElement.onloadstart = () => {
                 container.removeChild(loader);
                 container.appendChild(mediaElement);
@@ -62,7 +78,7 @@ class Lightbox {
             loader.classList.add('lightbox__loader');
             container.innerHTML = '';
             container.appendChild(loader);
-         
+
             image.onload = () => {
                 container.removeChild(loader);
                 container.appendChild(image);
@@ -71,7 +87,7 @@ class Lightbox {
             image.src = url
         }
     }
-    
+
     // GESTION CLAVIER AFFICHAGE DES IMAGES.
     onKeyUp(e) {
         if (e.key === 'Escape') {
@@ -113,12 +129,12 @@ class Lightbox {
     /**
      * @param {string} url URL de l'image
      * @returns {HTMLElement}
-     */ 
+     */
     buildDOM() {
         const dom = document.createElement('div');
         dom.classList.add('lightbox');
-        dom.innerHTML = 
-        `
+        dom.innerHTML =
+            `
             <button class="lightbox__close" aria-label="close button" aria-description="Fermer la lightbox" >
                 <i class="fa-solid fa-xmark" ></i>
             </button>      

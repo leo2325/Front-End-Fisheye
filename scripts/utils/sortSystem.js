@@ -4,8 +4,9 @@ const byPopularity = document.getElementById('byPopularity');
 const byDate = document.getElementById('byDate');
 const byName = document.getElementById('byName');
 const byPopularityIcon = document.getElementById('byPopularityIcon');
+const ulSort = document.getElementById('sortList');
 let menuVisible = false;
-
+  
 /* Fonction dérouler la sortList */
 function launchSortlist() {
     byDate.classList.toggle('visible');
@@ -14,12 +15,15 @@ function launchSortlist() {
     menuVisible = !menuVisible;
 }
 /* Evenement affichage de la classList */
-byPopularityIcon.addEventListener('click', launchSortlist);
+ulSort.addEventListener('click', launchSortlist);
 
 /**
  * Fonction de tri des images 
  */
 function sortSystem(event) {
+    if (!menuVisible) {
+        return;
+    }
     const selectedValue = event.target.getAttribute('id');
     // constante BOOK photographe
     const bookBox = document.querySelector('.photograph_book');
@@ -27,7 +31,7 @@ function sortSystem(event) {
     const bookElements = Array.from(document.querySelectorAll('.bannerPhotographerBox'));
     //Remplacement du contenu du BOOK par une chaîne vide.
     bookBox.innerHTML = '';
-
+    
     if (selectedValue === "byPopularity") {
         bookElements.sort(function (a, b) {
             const popularityA = a.getElementsByClassName("numberOfLike");
@@ -35,7 +39,7 @@ function sortSystem(event) {
 
             const popularityB = b.getElementsByClassName("numberOfLike");
             const popularityValueB = parseInt(popularityB[0].innerText);
-
+    
             return popularityValueB - popularityValueA;
         });
     }
@@ -70,9 +74,6 @@ function sortSystem(event) {
         });
     }
     bookElements.forEach(el => bookBox.append(el));
-
-
-
 }
 
 byPopularity.addEventListener('click', sortSystem);

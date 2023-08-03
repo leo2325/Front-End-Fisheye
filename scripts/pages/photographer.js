@@ -80,9 +80,10 @@ function getUserBannerDOMLikeAndPrice(likes, price) {
     const totalLikeElement = document.createElement('p');
     totalLikeElement.setAttribute('id', 'totalLikes');
     totalLikeElement.innerText = likes;
-    totalLikeElement.setAttribute('role', 'math')
+    totalLikeElement.setAttribute('tabindex', '0');
+    totalLikeElement.setAttribute('aria-label', 'le photographe a un total de' + ' ' + likes + 'j\'aime')
     // Création de la constante contenant les icônes likes
-    const iconLikeElement = document.createElement('i');
+    const iconLikeElement = document.createElement('span');
     iconLikeElement.setAttribute('class', 'fa-solid fa-heart');
     // Création de la constante price = création de l'élément p dans le DOM
     const priceElement = document.createElement('p');
@@ -122,6 +123,11 @@ function addLikeEvent() {
         if (Object.hasOwnProperty.call(likeBtn, e)) {
             const element = likeBtn[e];
             element.addEventListener('click', moreLike);
+            element.addEventListener('keyup', function (e) {
+                if (e.keyCode === 13) {
+                    moreLike(e);
+                }
+            })
         }
     }
 }
